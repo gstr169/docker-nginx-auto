@@ -10,8 +10,28 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs_volume:/etc/nginx/certs
+      - vhost_volume:/etc/nginx/vhost.d
+      - html_volume:/usr/share/nginx/html
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name:  nginx-proxy-letsencrypt
+    environment:
+      - DEFAULT_EMAIL=ml@brl.ru
+    restart: always
+    volumes:
+      - certs_volume:/etc/nginx/certs
+      - vhost_volume:/etc/nginx/vhost.d
+      - html_volume:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
   default:
     external:
       name: nginx-proxy
+
+volumes:
+  certs_volume:
+  vhost_volume:
+  html_volume:
