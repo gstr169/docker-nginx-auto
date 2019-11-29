@@ -38,6 +38,7 @@ networks:
 
 volumes:
   conf_volume:
-  certs_volume:
   vhost_volume:
   html_volume:
+  dhparam_volume:
+  certs_volume:
