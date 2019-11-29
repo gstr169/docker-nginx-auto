@@ -19,6 +19,7 @@ services:
     container_name:  nginx-proxy-letsencrypt
     environment:
       - DEFAULT_EMAIL=ml@brl.ru
+      - NGINX_PROXY_CONTAINER=nginx-proxy
     restart: always
     volumes:
       - certs_volume:/etc/nginx/certs
