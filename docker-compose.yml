@@ -21,13 +21,13 @@ services:
     container_name:  nginx-proxy-letsencrypt
     restart: always
     environment:
-      - DEFAULT_EMAIL=ml@brl.ru
+      - DEFAULT_EMAIL=dmitrii.f@brl.ru
       - NGINX_PROXY_CONTAINER=nginx-proxy
     volumes:
-      - conf_volume:/etc/nginx/conf.d
-      - vhost_volume:/etc/nginx/vhost.d
-      - html_volume:/usr/share/nginx/html
-      - dhparam_volume:/etc/nginx/dhparam
+      - conf_volume:/etc/nginx/conf.d:rw
+      - vhost_volume:/etc/nginx/vhost.d:rw
+      - html_volume:/usr/share/nginx/html:rw
+      - dhparam_volume:/etc/nginx/dhparam:rw
       - certs_volume:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
