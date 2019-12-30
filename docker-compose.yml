@@ -9,11 +9,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - conf_volume:/etc/nginx/conf.d
-      - vhost_volume:/etc/nginx/vhost.d
-      - html_volume:/usr/share/nginx/html
-      - dhparam_volume:/etc/nginx/dhparam
-      - certs_volume:/etc/nginx/certs:ro
+      - conf_volume:/etc/nginx/conf.d:rw
+      - vhost_volume:/etc/nginx/vhost.d:rw
+      - html_volume:/usr/share/nginx/html:rw
+      - dhparam_volume:/etc/nginx/dhparam:rw
+      - certs_volume:/etc/nginx/certs:rw
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   nginx-proxy-letsencrypt:
